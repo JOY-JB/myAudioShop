@@ -2,7 +2,7 @@ export const Product_data = [
   {
     id: 1,
     category: "headphones",
-    is_featured: false,
+    is_featured: true,
     name: "XX99 Mark II",
     description:
       "The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound",
@@ -121,7 +121,7 @@ export const Product_data = [
   {
     id: 6,
     category: "earphones",
-    is_featured: false,
+    is_featured: true,
     name: "YX1 WIRELESS",
     description:
       "Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.",

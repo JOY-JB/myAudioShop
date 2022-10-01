@@ -14,6 +14,8 @@ import {
   SimpleLineIcons,
 } from "@expo/vector-icons";
 import Checkout from "../screens/Checkout";
+import { useSelector } from "react-redux";
+import { selectCart } from "../Store/cartSlice";
 
 const Theme = {
   ...DefaultTheme,
@@ -28,6 +30,7 @@ const HomeStackScreen = () => {
   return (
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
       <HomeStack.Screen name="Home" component={Home} />
+      <HomeStack.Screen name="productDetails" component={ProductDetails} />
     </HomeStack.Navigator>
   );
 };
@@ -37,10 +40,7 @@ const EarphonesStackScreen = () => {
   return (
     <EarphonesStack.Navigator screenOptions={{ headerShown: false }}>
       <EarphonesStack.Screen name="Earphones" component={Earphones} />
-      <EarphonesStack.Screen
-        name="product-Details"
-        component={ProductDetails}
-      />
+      <EarphonesStack.Screen name="productDetails" component={ProductDetails} />
     </EarphonesStack.Navigator>
   );
 };
@@ -51,7 +51,7 @@ const HeadphonesStackScreen = () => {
     <HeadphonesStack.Navigator screenOptions={{ headerShown: false }}>
       <HeadphonesStack.Screen name="Headphones" component={Headphones} />
       <HeadphonesStack.Screen
-        name="product-Details"
+        name="productDetails"
         component={ProductDetails}
       />
     </HeadphonesStack.Navigator>
@@ -63,7 +63,7 @@ const SpeakersStackScreen = () => {
   return (
     <SpeakersStack.Navigator screenOptions={{ headerShown: false }}>
       <SpeakersStack.Screen name="Speakers" component={Speakers} />
-      <SpeakersStack.Screen name="product-Details" component={ProductDetails} />
+      <SpeakersStack.Screen name="productDetails" component={ProductDetails} />
     </SpeakersStack.Navigator>
   );
 };
@@ -91,6 +91,8 @@ const TabIcon = ({ fontFamily, name, color }) => {
 const Tab = createBottomTabNavigator();
 
 export default Navigation = () => {
+  const cart = useSelector(selectCart);
+
   return (
     <NavigationContainer theme={Theme}>
       <Tab.Navigator
@@ -163,6 +165,7 @@ export default Navigation = () => {
                 color={color}
               />
             ),
+            tabBarBadge: cart.length ? cart.length : null,
           }}
           name="CartTab"
           component={CartStackStackScreen}

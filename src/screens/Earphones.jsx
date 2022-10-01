@@ -1,10 +1,16 @@
-import { View, Text } from "react-native";
 import React from "react";
+import { useSelector } from "react-redux";
+import ProductPage from "../components/ProductPage";
+import { selectEarphones } from "../Store/ProductSlice";
 
-export default function Earphones() {
+export default function Earphones({ navigation }) {
+  const earphonesData = useSelector(selectEarphones);
+
   return (
-    <View>
-      <Text>Earphones</Text>
-    </View>
+    <ProductPage
+      data={earphonesData}
+      title="EARPHONES"
+      navigation={navigation}
+    />
   );
 }
